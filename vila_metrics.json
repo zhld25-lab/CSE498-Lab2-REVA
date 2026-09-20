@@ -1,0 +1,64 @@
+{
+  "num_questions": 10,
+  "num_answered": 10,
+  "num_correct": 6,
+  "accuracy": 0.6,
+  "by_category": {
+    "Factual Perception": {
+      "num_questions": 6,
+      "num_answered": 6,
+      "num_correct": 4,
+      "accuracy": 0.6666666666666666
+    },
+    "Temporal Understanding": {
+      "num_questions": 3,
+      "num_answered": 3,
+      "num_correct": 1,
+      "accuracy": 0.3333333333333333
+    },
+    "Spatial Reasoning": {
+      "num_questions": 1,
+      "num_answered": 1,
+      "num_correct": 1,
+      "accuracy": 1.0
+    }
+  },
+  "by_subcategory": {
+    "Object and Land Cover Recognition": {
+      "num_questions": 2,
+      "num_answered": 2,
+      "num_correct": 0,
+      "accuracy": 0.0
+    },
+    "Change Detection": {
+      "num_questions": 1,
+      "num_answered": 1,
+      "num_correct": 1,
+      "accuracy": 1.0
+    },
+    "Temporal Grounding": {
+      "num_questions": 2,
+      "num_answered": 2,
+      "num_correct": 0,
+      "accuracy": 0.0
+    },
+    "General Understanding": {
+      "num_questions": 3,
+      "num_answered": 3,
+      "num_correct": 3,
+      "accuracy": 1.0
+    },
+    "Trend and Pattern": {
+      "num_questions": 1,
+      "num_answered": 1,
+      "num_correct": 1,
+      "accuracy": 1.0
+    },
+    "Structural Layout": {
+      "num_questions": 1,
+      "num_answered": 1,
+      "num_correct": 1,
+      "accuracy": 1.0
+    }
+  }
+}
