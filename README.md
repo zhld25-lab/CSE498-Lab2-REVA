@@ -13,6 +13,7 @@ This repository contains my submission for **CSE398/CSE498 Lab 2: ReVA VQA**.
 - `qwen_finetuned_result.csv` — LoRA fine-tuned Qwen3-VL evaluation result.
 - `vila_metrics.json` — VILA baseline evaluation metrics.
 - `example_analysis.md` — short qualitative analysis of three representative ReVA examples.
+- `REPORT.md` — detailed experiment report covering the workflow, smoke test, models, results, limitations, and future improvements.
 
 ## Evaluation Results
 
