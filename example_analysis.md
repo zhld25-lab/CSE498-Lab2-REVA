@@ -20,8 +20,7 @@ A — Correct
 A — Correct
 
 **Analysis:**  
-All three models answered this question correctly. The main visual change is relatively large and easy to observe: as the camera moves upward, the field of view expands and more of the parking lot and surrounding area becomes visible. This type of global scene-level change can still be captured reasonably well even when only a small number of video frames are sampled. The fine-tuned Qwen model produced the same prediction as the baseline model on this example.
-
+All three models answered this example correctly. The main visual change is large and scene-level: as the camera moves upward, the field of view expands and more of the parking lot and surrounding landscape becomes visible. This type of global change can be recognized even with sparse video sampling.
 
 ## Example 2 — Object and Land Cover Recognition
 
@@ -43,8 +42,7 @@ B — Correct
 D — Incorrect
 
 **Analysis:**  
-The two Qwen models correctly identified both the spatial location and movement direction of the electric shuttle bus, while VILA selected an incorrect option. This example shows a difference between the models on object-level spatial understanding. In this 10-question subset, Qwen performed better than VILA on Object and Land Cover Recognition overall. Fine-tuning did not change the Qwen prediction for this example because both the baseline and fine-tuned models already selected the correct answer.
-
+The two Qwen models correctly identified both the spatial location and motion direction of the shuttle bus, while VILA selected an incorrect option. This illustrates a model-level difference on object and spatial understanding. In the final 50-question evaluation, both Qwen models achieved 7/14 (50.00%) on Object and Land Cover Recognition, while VILA also achieved 7/14 (50.00%) overall in this subcategory but produced only 12 valid parsed answers out of the 14 questions.
 
 ## Example 3 — Temporal Grounding
 
@@ -66,11 +64,12 @@ B — Incorrect
 B — Incorrect
 
 **Analysis:**  
-All three models failed on this temporal grounding question. The task requires identifying both when the group first becomes visible and when it disappears, which depends on fine-grained temporal information rather than only general scene understanding. In this experiment, only two video frames were used during evaluation because of GPU memory limitations. This sparse temporal sampling likely made exact duration estimation more difficult. The result is consistent with the overall evaluation, where both Qwen models and VILA achieved 0% accuracy on the two Temporal Grounding questions.
-
+This temporal example is difficult because the model must identify both the beginning and end of the visible interval rather than only recognize the scene. Sparse temporal information makes this type of question particularly challenging. In the final 50-question evaluation, Temporal Grounding was one of the weakest Qwen categories: both Qwen Base and Qwen Fine-tuned achieved 1/6 (16.67%). VILA achieved 2/6 (33.33%) on Temporal Grounding.
 
 ## Overall Observation
 
-On the 10-question official ReVA subset, Qwen Base achieved 70% accuracy, Qwen Fine-tuned also achieved 70%, and VILA achieved 60%. The fine-tuned Qwen model produced the same predictions as the baseline Qwen model on all ten evaluated questions, so no measurable improvement from fine-tuning was observed on this small subset.
+On the final **50-question ReVA subset**, Qwen Base achieved **33/50 = 66.00%**, Qwen Fine-tuned also achieved **33/50 = 66.00%**, and VILA achieved **28/50 = 56.00%**. Qwen Base and Fine-tuned completed all 50 questions, while VILA produced valid parsed answers for 46 of 50 questions.
 
-The models performed well on General Understanding, Change Detection, Structural Layout, and Trend and Pattern questions, while Temporal Grounding was the most difficult category. All three models answered both Temporal Grounding questions incorrectly. Because the evaluation subset is small and only two video frames were used to fit the models within the available GPU memory, these results should be interpreted as a limited comparison rather than a comprehensive evaluation of model performance.
+The lightweight LoRA fine-tuning run did not produce a measurable improvement in overall accuracy on this evaluation set. The Qwen models performed especially well on General Understanding (6/6), Change Detection (4/4), Hypothetical Reasoning (3/3), and Trend and Pattern (3/3), while Temporal Grounding was the most difficult category at 1/6.
+
+The Qwen evaluation used a low-memory configuration with two sampled video frames because of the RTX 2080 Ti memory limit. This is an important experimental limitation, particularly for temporal questions that depend on observing changes across the full video.
