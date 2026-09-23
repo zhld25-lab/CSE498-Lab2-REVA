@@ -12,23 +12,32 @@ This repository contains my submission for **CSE398/CSE498 Lab 2: ReVA VQA**.
 - `qwen_base_result.csv` — Qwen3-VL baseline evaluation result.
 - `qwen_finetuned_result.csv` — LoRA fine-tuned Qwen3-VL evaluation result.
 - `vila_metrics.json` — VILA baseline evaluation metrics.
-- `example_analysis.md` — short analysis of three representative evaluation examples.
+- `example_analysis.md` — short qualitative analysis of three representative ReVA examples.
 
 ## Evaluation Results
 
 | Model | Accuracy | Questions | Answered |
 |---|---:|---:|---:|
-| Qwen3-VL Base | 70.00% | 10 | 10 |
-| Qwen3-VL Fine-tuned | 70.00% | 10 | 10 |
-| VILA1.5-3B Base | 60.00% | 10 | 10 |
+| Qwen3-VL Base | 66.00% | 50 | 50 |
+| Qwen3-VL Fine-tuned | 66.00% | 50 | 50 |
+| VILA1.5-3B Base | 56.00% | 50 | 46 |
 
-The results above were obtained on a 10-question subset sampled from the official ReVA test set available on the MAGIC server.
+The final comparison uses the same fixed **50-question subset** sampled from the official ReVA test set available on the MAGIC server.
 
-Because of the available GPU memory on the RTX 2080 Ti, Qwen evaluation used a low-memory configuration with 2 sampled video frames.
+For Qwen evaluation, the RTX 2080 Ti memory limit required a low-memory configuration with `MAX_FRAMES=2`, `MAX_PIXELS=28224`, and `MAX_MODEL_LEN=2048`. Both Qwen Base and Qwen Fine-tuned were evaluated with the same configuration. VILA used its own evaluation pipeline with `NUM_VIDEO_FRAMES=4`.
+
+## Key Observations
+
+- Qwen3-VL Base completed all 50 questions and achieved **33/50 = 66.00%**.
+- Qwen3-VL Fine-tuned also completed all 50 questions and achieved **33/50 = 66.00%**.
+- VILA1.5-3B produced valid parsed answers for **46/50** questions and achieved **28/50 = 56.00%** overall accuracy.
+- The lightweight LoRA fine-tuning run did not produce a measurable accuracy improvement over the Qwen base model on this 50-question subset.
+- Temporal Grounding remained challenging for Qwen: **1/6 = 16.67%** for both Base and Fine-tuned.
+- General Understanding was strong for all evaluated models: Qwen **6/6** and VILA **6/6**.
 
 ## Notes
 
 - All unit tests passed: **7 passed**.
 - Qwen fine-tuning used LoRA.
-- The three-example qualitative analysis is provided in `example_analysis.md`.
 - The ReVA dataset and model checkpoints are not included in this repository.
+- The evaluation results in this repository now correspond to the final **50-question** comparison rather than the earlier 10-question smoke test.
