@@ -1,4 +1,4 @@
 model,accuracy,num_questions,num_answered,source
 Qwen base,66.00%,50,50,outputs/qwen_base_official50/qwen_base_official50/result.csv
-Qwen fine-tuned,66.00%,50,50,outputs/qwen_finetuned_official50/qwen_finetuned_official50/result.csv
+Qwen fine-tuned V2,72.00%,50,50,outputs/qwen_finetuned_v2_official50_gpu1/qwen_finetuned_v2_official50_gpu1/result.csv
 VILA base,56.00%,50,46,outputs/vila_reva_official50/metrics.json
